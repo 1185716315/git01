@@ -1,0 +1,22 @@
+package com.yjxxt.crm.service;
+
+import com.yjxxt.crm.base.BaseService;
+import com.yjxxt.crm.bean.Permission;
+import com.yjxxt.crm.mapper.PermissionMapper;
+import com.yjxxt.crm.utlis.AssertUtil;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class PermissionService extends BaseService<Permission,Integer> {
+    @Resource
+    private PermissionMapper permissionMapper;
+
+    //查询用户所拥有的资源权限码
+    public List<String> queryUserHasRolesHasPermissions(Integer userId){
+       return permissionMapper.selectUserHasRolesHasPermissions(userId);
+    }
+}
